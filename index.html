@@ -2,40 +2,31 @@
 <html>
 
 <head>
-    <title></title>
+    <title>ABC's</title>
 </head>
 
 <body>
     <div id="container"></div>
     <script type="text/javascript">
     var combo = [],
-        usedChars = [];
+    usedChars = [];
 
     function combinations(input) {
         var i, ch, letters = input.split("");
-
-
-        //console.log(letters);
         for (i = 0; i < letters.length; i++) {
-            // console.log("letter before join: "+ letters.join(""))
-            //console.log('used letters:'+usedChars);
-            console.log( "COMBO START letters: [" + letters +"] index: "+ i)
+            console.log("COMBO START letters: [" + letters + "] index: " + i)
             ch = letters.splice(i, 1);
             usedChars.push(ch);
-            //console.log('usedChars: [' + usedChars+"] index: "+ i)
             if (letters.length == 0) {
                 combo.push(usedChars.join(""));
-                console.log('final_combo array: [' + combo+"] index: "+ i)
+                console.log('final_combo array: [' + combo + "] index: " + i)
             }
+            combinations(letters.join(""), console.log("function started:[" + letters + "]index: " + i));
 
-            //console.log('function about to run: '+ letters);
-            combinations(letters.join(""),console.log("function started:[" + letters +"]index: "+ i));
-            //console.log('letters2: '+ letters + ' index2:'+ i)
             letters.splice(i, 0, ch);
-            //console.log('after function:' +ch+" used chars: "+ usedChars + 'index: '+ i)
+
             usedChars.pop();
 
-            // console.log('letters after for loop:'+ letters)
         }
 
     }
